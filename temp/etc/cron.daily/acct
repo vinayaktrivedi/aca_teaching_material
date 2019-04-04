@@ -1,0 +1,28 @@
+#!/bin/sh
+
+test -x /usr/sbin/accton || exit 0
+
+# Source defaults
+if [ -f /etc/default/acct ]
+then
+	. /etc/default/acct
+else
+	ACCT_LOGGING="30"
+fi
+
+# Save log file
+if [ ! -d /var/log/account ]; then
+    mkdir -p /var/log/account
+    touch /var/log/account/pacct
+    chmod 0640 /var/log/account/pacct*
+    chown root:adm /var/log/account/pacct*
+fi
+cd /var/log/account
+savelog -g adm -m 0640 -u root -c "${ACCT_LOGGING}" /var/log/account/pacct > /dev/null
+ 
+
+# Restart acct
+invoke-rc.d acct restart > /dev/null
+
+# This is needed because accton.c returns errno
+exit 0

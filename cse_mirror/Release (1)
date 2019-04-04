@@ -1,0 +1,8 @@
+Archive: stretch-backports
+Origin: Debian Backports
+Label: Debian Backports
+NotAutomatic: yes
+ButAutomaticUpgrades: yes
+Acquire-By-Hash: yes
+Component: main
+Architecture: amd64

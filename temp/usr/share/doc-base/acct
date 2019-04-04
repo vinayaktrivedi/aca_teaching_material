@@ -1,0 +1,15 @@
+Document: acct
+Title: The GNU Accounting utilities
+Author: Noel Cragg
+Abstract: The GNU Accounting utilities for process and login accounting
+ GNU Accounting Utilities is a set of utilities which reports and summarizes
+ data about user connect times and process execution statistics.
+ .
+ "Login accounting" provides summaries of system resource usage based on connect
+ time, and "process accounting" provides summaries based on the commands
+ executed on the system.
+Section: System/Security
+
+Format: HTML
+Index: /usr/share/doc/acct/html
+Files: /usr/share/doc/acct/html

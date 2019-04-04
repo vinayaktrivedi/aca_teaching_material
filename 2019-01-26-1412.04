@@ -1,0 +1,324 @@
+256a
+Package: python-parsedatetime
+Source: parsedatetime
+Version: 2.1-3+deb9u1
+Installed-Size: 177
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Architecture: all
+Depends: python:any (<< 2.8), python:any (>= 2.7.5-5~), base-files (>= 4.0.4)
+Recommends: python-pyicu
+Description: Python module to parse human-readable date/time expressions
+Homepage: https://pypi.python.org/pypi/parsedatetime/
+Description-md5: e7dd28a0667034a74044e3bcd3bbbee4
+Section: python
+Priority: optional
+Filename: pool/main/p/parsedatetime/python-parsedatetime_2.1-3+deb9u1_all.deb
+Size: 38378
+MD5sum: e5d83638941e2c6c1319fc4e59ce3008
+SHA256: 8d5526f76e32da788e29ec6537a6555250d9c8a0a1207aad40861a1b6f2727e1
+
+Package: python3-parsedatetime
+Source: parsedatetime
+Version: 2.1-3+deb9u1
+Installed-Size: 171
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Architecture: all
+Depends: python3:any (>= 3.3.2-2~), base-files (>= 4.0.4)
+Recommends: python3-pyicu
+Description: Python 3 module to parse human-readable date/time expressions
+Homepage: https://pypi.python.org/pypi/parsedatetime/
+Description-md5: 4d161e1cc640230937c0082f1e34ba67
+Section: python
+Priority: optional
+Filename: pool/main/p/parsedatetime/python3-parsedatetime_2.1-3+deb9u1_all.deb
+Size: 37720
+MD5sum: 902add07ad38a3befe3cc7c25146920b
+SHA256: ad968dbacaa6f8ceacabf37af88de46d2aa45a1c64bf2796186e1ef0255d2aa1
+
+Package: python-acme
+Version: 0.28.0-1~deb9u1
+Installed-Size: 263
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: ca-certificates, python-openssl (>= 0.15), python-cryptography (>= 0.8), python-josepy, python-mock, python-requests, python-requests-toolbelt, python-rfc3339, python-setuptools (>= 11.3~), python-six (>= 1.9.0), python-tz, python:any (<< 2.8), python:any (>= 2.7.5-5~)
+Suggests: python-acme-doc
+Breaks: certbot (<< 0.20.0-1)
+Description: ACME protocol library for Python 2
+Homepage: https://letsencrypt.org/
+Description-md5: e9984343fb79b5b38891196fe71a1b00
+Section: python
+Priority: optional
+Filename: pool/main/p/python-acme/python-acme_0.28.0-1~deb9u1_all.deb
+Size: 48658
+MD5sum: 55a75b0267988fd63f55258bc46d4ad6
+SHA256: 68ee7bc3296b63175ccc093a35ec04f30a49840c569cf7fc382d21c8adca3c04
+
+Package: python-acme-doc
+Source: python-acme
+Version: 0.28.0-1~deb9u1
+Installed-Size: 811
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common
+Description: ACME protocol library for Python 2 - Documentation
+Homepage: https://letsencrypt.org/
+Description-md5: c0e216e279369caa34b4a2cb6e59f51e
+Section: doc
+Priority: optional
+Filename: pool/main/p/python-acme/python-acme-doc_0.28.0-1~deb9u1_all.deb
+Size: 71808
+MD5sum: 0f887f69c7fb3473cbc5f7bd567c54b4
+SHA256: bdce124c4f7696a02b0c208c096098af42e816d59832de3368610cd89a59f4cd
+
+Package: python3-acme
+Source: python-acme
+Version: 0.28.0-1~deb9u1
+Installed-Size: 263
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: ca-certificates, python3-openssl (>= 0.15), python3-cryptography (>= 0.8), python3-josepy, python3-mock, python3-pkg-resources, python3-requests (>= 2.4.1), python3-requests-toolbelt (>= 0.3.0), python3-rfc3339, python3-six (>= 1.9.0), python3-tz, python3:any (>= 3.3.2-2~)
+Suggests: python-acme-doc
+Description: ACME protocol library for Python 3
+Homepage: https://letsencrypt.org/
+Description-md5: 1f6a20683296d3471681d8269f592f79
+Section: python
+Priority: optional
+Filename: pool/main/p/python-acme/python3-acme_0.28.0-1~deb9u1_all.deb
+Size: 48726
+MD5sum: 6532b1aa6f359298baf75d8e6abbcec9
+SHA256: 8c41cd5826e49acae3876dfe21a698d76f91bd9c3e910068b91b003d62232a49
+
+Package: certbot
+Source: python-certbot
+Version: 0.28.0-1~deb9u1
+Installed-Size: 66
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Replaces: letsencrypt
+Provides: letsencrypt
+Depends: python3-certbot (= 0.28.0-1~deb9u1), init-system-helpers (>= 1.18~), python3:any
+Suggests: python3-certbot-apache, python3-certbot-nginx, python-certbot-doc
+Breaks: letsencrypt (<= 0.6.0)
+Description: automatically configure HTTPS using Let's Encrypt
+Homepage: https://certbot.eff.org/
+Description-md5: deb7e404ce1b150b59379c3f9a73ac1a
+Section: web
+Priority: extra
+Filename: pool/main/p/python-certbot/certbot_0.28.0-1~deb9u1_all.deb
+Size: 37496
+MD5sum: aa8503a7ea1fb817ee25370943fabde5
+SHA256: d00e4cc81c94ce81c6e8b23b60c615e80090763bdac056447d14c2cdf42c90d2
+
+Package: letsencrypt
+Source: python-certbot
+Version: 0.28.0-1~deb9u1
+Installed-Size: 30
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: certbot
+Description: transitional dummy package
+Homepage: https://certbot.eff.org/
+Description-md5: b77c3edb2fdeaba6edecc4488cb24985
+Tag: role::shared-lib
+Section: oldlibs
+Priority: extra
+Filename: pool/main/p/python-certbot/letsencrypt_0.28.0-1~deb9u1_all.deb
+Size: 21890
+MD5sum: 977028b3447c95298fa04883cc896561
+SHA256: 6253f94c926aba5cfe7636a425a9842a7619cff4026d83ad0ce588f5588d7a72
+
+Package: python-certbot-doc
+Source: python-certbot
+Version: 0.28.0-1~deb9u1
+Installed-Size: 4120
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common
+Description: client documentation for certbot
+Homepage: https://certbot.eff.org/
+Description-md5: c921886ee1b2b199ff3083306791f0a8
+Section: doc
+Priority: extra
+Filename: pool/main/p/python-certbot/python-certbot-doc_0.28.0-1~deb9u1_all.deb
+Size: 327864
+MD5sum: 7a147b0ef4c2da51615e2f667b32c813
+SHA256: cfb54f4310c95725e866779b3acd3f064cd9ff8273ad771e19c2da65bddbc329
+
+Package: python3-certbot
+Source: python-certbot
+Version: 0.28.0-1~deb9u1
+Installed-Size: 1210
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Replaces: python-letsencrypt
+Depends: python3-acme (>= 0.26.0~), python3-requests (>= 2.4.3), python3-configargparse (>= 0.10.0), python3-configobj, python3-cryptography (>= 1.2), python3-josepy, python3-mock, python3-parsedatetime, python3-pkg-resources, python3-rfc3339, python3-tz, python3-zope.component, python3-zope.interface, python3:any (>= 3.3.2-2~)
+Recommends: certbot
+Suggests: python-certbot-doc
+Breaks: python-certbot-apache (<< 0.20.0), python-certbot-nginx (<< 0.20.0), python-letsencrypt (<= 0.6.0)
+Description: main library for certbot
+Homepage: https://certbot.eff.org/
+Description-md5: 85358386ec4314ac7c0c6d37555b95ff
+Section: python
+Priority: optional
+Filename: pool/main/p/python-certbot/python3-certbot_0.28.0-1~deb9u1_all.deb
+Size: 222156
+MD5sum: 8eae3049896ea074e159bce946bd5c30
+SHA256: 1c73dc748f27e5d3be2e306cbbd7fe75c14b6e23afeda544cc89eb6acfe1a2bc
+
+Package: python-certbot-apache
+Version: 0.28.0-1~deb9u1
+Installed-Size: 14
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: python3-certbot-apache
+Description: transitional dummy package
+Homepage: https://letsencrypt.org/
+Description-md5: 0cbe148fb4081480f272a28c3f810888
+Section: python
+Priority: extra
+Filename: pool/main/p/python-certbot-apache/python-certbot-apache_0.28.0-1~deb9u1_all.deb
+Size: 4022
+MD5sum: 259e630915587c7cb093d1a29d76dc81
+SHA256: ac3c4b9c2a09720621f11693dfcc99f94c8b14f8fbe80cf780e2d50f12e02905
+
+Package: python-certbot-apache-doc
+Source: python-certbot-apache
+Version: 0.28.0-1~deb9u1
+Installed-Size: 941
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common
+Description: Apache plugin documentation for Certbot
+Homepage: https://letsencrypt.org/
+Description-md5: 6e462b02b9ab52b9c7012344365f0504
+Section: doc
+Priority: extra
+Filename: pool/main/p/python-certbot-apache/python-certbot-apache-doc_0.28.0-1~deb9u1_all.deb
+Size: 82484
+MD5sum: 305dee043a161f683f7cc12d9543b5e2
+SHA256: 48dcc65f6ab50812073cf4f29d663d90a2f46bdc076dfc575a0743c178e35da1
+
+Package: python3-certbot-apache
+Source: python-certbot-apache
+Version: 0.28.0-1~deb9u1
+Installed-Size: 395
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Replaces: python-certbot-apache (<< 0.20.0~), python-letsencrypt-apache
+Depends: apache2, certbot (>= 0.26.0~), python3-acme (>= 0.25.0~), python3-augeas, python3-certbot, python3-mock, python3-pkg-resources, python3-zope.component, python3-zope.interface, python3:any (>= 3.3.2-2~)
+Suggests: python-certbot-apache-doc
+Breaks: python-certbot-apache (<< 0.20.0~), python-letsencrypt-apache
+Description: Apache plugin for Certbot
+Homepage: https://letsencrypt.org/
+Description-md5: 30ce999e68e8586fa200da41d3a2a49f
+Section: python
+Priority: optional
+Filename: pool/main/p/python-certbot-apache/python3-certbot-apache_0.28.0-1~deb9u1_all.deb
+Size: 69620
+MD5sum: 0cf16f21d13681af73c8e4935592ceac
+SHA256: fde1067af82d2f5fd72f81fef4e1d7f66d1817904af2d025f16810274569e9d5
+
+Package: python-certbot-nginx
+Version: 0.28.0-1~deb9u1
+Installed-Size: 10
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: python3-certbot-nginx
+Description: transitional dummy package
+Homepage: https://letsencrypt.org/
+Description-md5: fa49bab931274861c23fc8ebfeed6bf8
+Section: python
+Priority: extra
+Filename: pool/main/p/python-certbot-nginx/python-certbot-nginx_0.28.0-1~deb9u1_all.deb
+Size: 2872
+MD5sum: 1840f4c43a05f1ad335d7d46558dcfe3
+SHA256: 18d7dfa09d5f9ff9cd89833e4a7622dee298b81920153d0d71f2e45287d336c5
+
+Package: python-certbot-nginx-doc
+Source: python-certbot-nginx
+Version: 0.28.0-1~deb9u1
+Installed-Size: 447
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common
+Description: Nginx plugin documentation for Certbot
+Homepage: https://letsencrypt.org/
+Description-md5: 44298552b70c0afe9ea738f00ec6c778
+Section: doc
+Priority: extra
+Filename: pool/main/p/python-certbot-nginx/python-certbot-nginx-doc_0.28.0-1~deb9u1_all.deb
+Size: 43898
+MD5sum: 6ba927b07b382942ef17333dca879c2f
+SHA256: 1508e0e7956001455598cc0d36c1f5d10c5c424398a6144d445a36f19f7a8ac6
+
+Package: python3-certbot-nginx
+Source: python-certbot-nginx
+Version: 0.28.0-1~deb9u1
+Installed-Size: 280
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Replaces: python-certbot-nginx (<< 0.20.0~)
+Depends: nginx, certbot (>= 0.25.0~), python3-acme (>= 0.26.0~), python3-certbot, python3-mock, python3-openssl (>= 0.13), python3-pkg-resources, python3-pyparsing (>= 1.5.5), python3-zope.interface, python3:any (>= 3.3.2-2~)
+Suggests: python-certbot-nginx-doc
+Breaks: python-certbot-nginx (<< 0.20.0~)
+Description: Nginx plugin for Certbot
+Homepage: https://letsencrypt.org/
+Description-md5: a4b0f37cf92adc225368ca044499723c
+Section: python
+Priority: optional
+Filename: pool/main/p/python-certbot-nginx/python3-certbot-nginx_0.28.0-1~deb9u1_all.deb
+Size: 50170
+MD5sum: 92cad6a714ea69ed2838528f288c114c
+SHA256: 2f819ad3132a08e6e0fa3b2997c6f3f56c96a18fba2143ed7cca5fcb27cc7589
+
+Package: python-josepy
+Version: 1.1.0-2~deb9u1
+Installed-Size: 143
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: python-cryptography (>= 0.8), python-openssl, python-pkg-resources, python-six (>= 1.9.0), python:any (<< 2.8), python:any (>= 2.7.5-5~)
+Description: JOSE implementation for Python 2.x
+Homepage: https://certbot.eff.org/
+Description-md5: 03fcab569a545beb4b18c8eecfe2ec08
+Section: python
+Priority: optional
+Filename: pool/main/p/python-josepy/python-josepy_1.1.0-2~deb9u1_all.deb
+Size: 27686
+MD5sum: 8a15dfc4116905a5194228c4beec08e9
+SHA256: 5091e4db565ddce603531baa87b29da96d5bfa5704df262bb93d1ef1627cf12e
+
+Package: python-josepy-doc
+Source: python-josepy
+Version: 1.1.0-2~deb9u1
+Installed-Size: 593
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: libjs-sphinxdoc (>= 1.0), sphinx-rtd-theme-common
+Description: JOSE implementation for Python - Documentation
+Homepage: https://certbot.eff.org/
+Description-md5: 4889791d1846e4c87b5b14b65ab2c157
+Section: doc
+Priority: optional
+Filename: pool/main/p/python-josepy/python-josepy-doc_1.1.0-2~deb9u1_all.deb
+Size: 51826
+MD5sum: 5a9d2783e61ce3aacf2353fd43691582
+SHA256: db52df426a69b2c7ab15638509a4a9e447044f66a20d856007ffe22df75ffbdd
+
+Package: python3-josepy
+Source: python-josepy
+Version: 1.1.0-2~deb9u1
+Installed-Size: 143
+Maintainer: Debian Let's Encrypt <team+letsencrypt@tracker.debian.org>
+Architecture: all
+Depends: python3-cryptography (>= 0.8), python3-openssl (>= 0.13), python3-pkg-resources, python3-six (>= 1.9.0), python3:any (>= 3.3.2-2~)
+Description: JOSE implementation for Python 3.x
+Homepage: https://certbot.eff.org/
+Description-md5: a6d8be6a1e2747e5b5cffc91a865ed9a
+Section: python
+Priority: optional
+Filename: pool/main/p/python-josepy/python3-josepy_1.1.0-2~deb9u1_all.deb
+Size: 27764
+MD5sum: c2c2f95eab65cde5240ca807c2c99169
+SHA256: 88dedd6a73b021728d9b31e45ad7404ccce87fcde94354161cda51c66621a3b5
+
+.

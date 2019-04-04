@@ -1,0 +1,9 @@
+1. Normal Functioning check - 2 points
+2. Operation code given invalid - 0.5 points
+3. Source/Dest file given not valid - 0.5 points
+4. Parallel Writing/Appending to same file - 2 points
+5. Parallel Writing to different files but from same destination file - 2 points
+6. Parallel Writing/Appending and Deleting the same file - 2 points
+7. Giving same file arguments for Delete Operation - 1 point
+8. Giving same file arguments for Writing/Appending operation - 1 point
+9. DeadLock Occuring - 4 points

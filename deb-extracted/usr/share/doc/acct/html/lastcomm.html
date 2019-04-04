@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.4.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>lastcomm (Accounting Utilities Manual)</title>
+
+<meta name="description" content="lastcomm (Accounting Utilities Manual)">
+<meta name="keywords" content="lastcomm (Accounting Utilities Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="dump_002dacct.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="sa.html#sa" rel="next" title="sa">
+<link href="accton.html#accton" rel="prev" title="accton">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="lastcomm"></a>
+<div class="header">
+<p>
+Next: <a href="sa.html#sa" accesskey="n" rel="next">sa</a>, Previous: <a href="accton.html#accton" accesskey="p" rel="prev">accton</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="dump_002dacct.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="lastcomm-1"></a>
+<h2 class="chapter">3 <code>lastcomm</code></h2>
+
+<p><code>lastcomm</code> prints out information about previously executed
+commands.  If no arguments are specified, <code>lastcomm</code> will print
+info about all of the commands in the <code>acct</code> file (the
+record file).  If called with a command name, user name, or tty name,
+only records containing those items will be displayed.  For example, to
+find out which users used command &lsquo;<samp>a.out</samp>&rsquo; and which users were
+logged into &lsquo;<samp>tty0</samp>&rsquo;, type:
+</p>
+<p><code>lastcomm a.out tty0</code>
+</p>
+<p>This will print any entry for which &lsquo;<samp>a.out</samp>&rsquo; or &lsquo;<samp>tty0</samp>&rsquo; matches
+in any of the record&rsquo;s fields (command, name, or tty).  If you want to
+find only items that match ALL of the arguments on the command line, you
+must use the &rsquo;&ndash;strict-match&rsquo; option.  For example, to list all of the
+executions of command &lsquo;<samp>a.out</samp>&rsquo; by user &lsquo;<samp>root</samp>&rsquo; on terminal
+&lsquo;<samp>tty0</samp>&rsquo;, type:
+</p>
+<p><code>lastcomm --strict-match a.out root tty0</code>
+</p>
+<p>The order of the arguments is not important.
+</p>
+<p>For each entry the following information is printed:
+</p>
+<ul>
+<li> command name of the process
+</li><li> flags, as recorded by the system accounting routines:
+<ul class="no-bullet">
+<li>- <strong>S</strong> command executed by super-user
+</li><li>- <strong>F</strong> command executed after a fork but without a following exec
+</li><li>- <strong>C</strong> command run in PDP-11 compatibility mode (VAX only)
+</li><li>- <strong>D</strong> command terminated with the generation of a core file
+</li><li>- <strong>X</strong> command was terminated with the signal SIGTERM
+</li></ul>
+</li><li> the name of the user who ran the process
+</li><li> time the process started
+</li></ul>
+
+<a name="Flags-2"></a>
+<h3 class="section">3.1 Flags</h3>
+
+<p>This program implements the features of regular u*x <code>lastcomm</code> with
+a few extra flags.  When <code>lastcomm</code> is invoked without arguments,
+the output looks like this:
+</p><div class="example">
+<pre class="example">nslookup         jberman  ttypb      0.03 secs Tue Feb 16 19:23
+comsat           root     __         0.03 secs Tue Feb 16 19:19
+uptime           ctilburg __         0.11 secs Tue Feb 16 19:23
+sh          F    ctilburg __         0.02 secs Tue Feb 16 19:23
+sleep            ctilburg __         0.02 secs Tue Feb 16 19:22
+ls               noel     ttyp4      0.19 secs Tue Feb 16 19:23
+</pre></div>
+
+<dl compact="compact">
+<dt><code>--strict-match</code></dt>
+<dd><p>Print only entries that match <em>all</em> of the arguments on the command
+line.
+</p>
+</dd>
+<dt><code>--user <var>name</var></code></dt>
+<dd><p>List records for user with <var>name</var>.  This is useful if you&rsquo;re trying
+to match a username that happens to be the same as a command (e.g.,
+<code>ed</code>).
+</p>
+</dd>
+<dt><code>--command <var>name</var></code></dt>
+<dd><p>List records for command <var>name</var>.
+</p>
+</dd>
+<dt><code>--tty <var>name</var></code></dt>
+<dd><p>List records for tty <var>name</var>.
+</p>
+</dd>
+<dt><code>-f <var>filename</var></code></dt>
+<dt><code>--file <var>filename</var></code></dt>
+<dd><p>Read from the file <var>filename</var> instead of the system&rsquo;s
+<code>acct</code> file.
+</p>
+</dd>
+<dt><code>--ahz <var>hz</var></code></dt>
+<dd><p>Use this flag to tell the program what <code>AHZ</code> should be (in hertz).
+This option is useful if you are trying to view an <code>acct</code> file
+created on another machine which has the same byte order and file format
+as your current machine, but has a different value for <code>AHZ</code>.
+</p>
+</dd>
+<dt><code>-p</code></dt>
+<dt><code>--show-paging</code></dt>
+<dd><p>Print paging statistics
+</p>
+</dd>
+<dt><code>--debug</code></dt>
+<dd><p>Print verbose internal information.
+</p>
+</dd>
+<dt><code>--version</code></dt>
+<dd><p>Print <code>lastcomm</code>&rsquo;s version number.
+</p>
+</dd>
+<dt><code>--help</code></dt>
+<dd><p>Print <code>lastcomm</code>&rsquo;s usage string and default locations of system
+files to standard output.
+</p></dd>
+</dl>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="sa.html#sa" accesskey="n" rel="next">sa</a>, Previous: <a href="accton.html#accton" accesskey="p" rel="prev">accton</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="dump_002dacct.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+Archive: stretch-updates
+Origin: Debian
+Label: Debian
+Component: main
+Architecture: amd64

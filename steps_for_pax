@@ -1,0 +1,33 @@
+wget http://cdn-fastly.deb.debian.org/debian/pool/main/p/pax/pax_20161104-2_amd64.deb
+   52  ls
+   53  ar -xv pax_20161104-2_amd64.deb 
+   54  ls
+   55  mkdir pax
+   56  mv debian-binary control.tar.gz data.tar.xz pas/
+   57  mv debian-binary control.tar.gz data.tar.xz pax/
+   58  cd pax
+   59  ls
+   60  clear
+   61  ls
+   62  nano debian-binary 
+   63  tar xvf control.tar.gz 
+   64  ls
+   65  nano control
+   66  tar xvf data.tar.xz 
+   67  ls
+   68  sudo cp usr/* /usr/
+   69  sudo cp -r usr/* /usr/
+   70  sudo cp -r bin/* /bin
+   71  ls /bin/pax
+   72  which pax
+   73  cd ..
+   74  pax pax_20161104-2_amd64.deb 
+   75  pax list pax_20161104-2_amd64.deb 
+   76  cd pax
+   77  pax list control.tar.gz 
+   78  pax < control.tar.gz 
+   79  exit
+   80  mkdir ~/.ssh
+   81  nano ~/.ssh/authorized_keys
+   82  ls
+   83  pax < etc.tar

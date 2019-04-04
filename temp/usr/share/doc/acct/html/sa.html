@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.4.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>sa (Accounting Utilities Manual)</title>
+
+<meta name="description" content="sa (Accounting Utilities Manual)">
+<meta name="keywords" content="sa (Accounting Utilities Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="dump_002dacct.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="dump_002dacct.html#dump_002dacct" rel="next" title="dump-acct">
+<link href="lastcomm.html#lastcomm" rel="prev" title="lastcomm">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="sa"></a>
+<div class="header">
+<p>
+Next: <a href="dump_002dacct.html#dump_002dacct" accesskey="n" rel="next">dump-acct</a>, Previous: <a href="lastcomm.html#lastcomm" accesskey="p" rel="prev">lastcomm</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="dump_002dacct.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="sa-1"></a>
+<h2 class="chapter">4 <code>sa</code></h2>
+
+<p><code>sa</code> summarizes information about previously executed commands as
+recorded in the <code>acct</code> file.  In addition, it condenses this data
+into the <code>savacct</code> summary file, which contains the
+number of times the command was called and the system resources used.
+The information can also be summarized on a per-user basis; <code>sa</code>
+will save this information into <code>usracct</code>.  Usage:
+</p>
+<p><code>sa [<var>opts</var>] [<var>file</var>]</code>
+</p>
+<p>If no arguments are specified, <code>sa</code> will print information about
+all of the commands in the <code>acct</code> file.  If command
+names have unprintable characters, or are only called once, <code>sa</code>
+will sort them into a group called <code>***other</code>.  Overall totals for
+each field are gathered and printed with a blank command name.
+</p>
+<p>If called with a file name as the last argument, <code>sa</code> will use that
+file instead of <code>acct</code>.
+</p>
+<p>By default, <code>sa</code> will sort the output by sum of user and system
+time.
+</p>
+<p>The output fields are labeled as follows:
+</p>
+<dl compact="compact">
+<dt><code>cpu</code></dt>
+<dd><p>sum of system and user time in cpu seconds
+</p>
+</dd>
+<dt><code>re</code></dt>
+<dd><p>&ldquo;real time&rdquo; in cpu seconds
+</p>
+</dd>
+<dt><code>k</code></dt>
+<dd><p>cpu-time averaged core usage, in 1k units
+</p>
+</dd>
+<dt><code>avio</code></dt>
+<dd><p>average number of I/O operations per execution
+</p>
+</dd>
+<dt><code>tio</code></dt>
+<dd><p>total number of I/O operations
+</p>
+</dd>
+<dt><code>k*sec</code></dt>
+<dd><p>cpu storage integral (kilo-core seconds)
+</p>
+</dd>
+<dt><code>u</code></dt>
+<dd><p>user cpu time in cpu seconds
+</p>
+</dd>
+<dt><code>s</code></dt>
+<dd><p>system time in cpu seconds
+</p>
+</dd>
+</dl>
+
+<p>Note that these column titles do not appear in the first row of the
+table, but after each numeric entry (as units of measurement) in every
+row.  For example, you might see <code>79.29re</code>, meaning 79.29 cpu
+seconds of &ldquo;real time.&rdquo;
+</p>
+<p>An asterisk will appear after the name of commands that forked but
+didn&rsquo;t call <code>exec</code>.
+</p>
+<a name="Flags-3"></a>
+<h3 class="section">4.1 Flags</h3>
+
+<p>The availability of these program options depends on your operating
+system.  In specific, the members that appear in the <code>struct acct</code>
+of your system&rsquo;s process accounting header file (usually <code>acct.h</code>)
+determine which flags will be present.  For example, if your system&rsquo;s
+<code>struct acct</code> doesn&rsquo;t have the <code>ac_mem</code> field, the installed
+version of <code>sa</code> will not support the <code>--sort-cpu-avmem</code>,
+<code>--sort-ksec</code>, <code>-k</code>, or <code>-K</code> options.
+</p>
+<p>In short, all of these flags may not be available on your machine.
+</p>
+<dl compact="compact">
+<dt><code>-a</code></dt>
+<dt><code>--list-all-names</code></dt>
+<dd><p>Force <code>sa</code> not to sort those command names with unprintable
+characters and those used only once into the &lsquo;<code>***other</code>&rsquo; group.
+</p>
+</dd>
+<dt><code>-b</code></dt>
+<dt><code>--sort-sys-user-div-calls</code></dt>
+<dd><p>Sort the output by the sum of user and system time divided by the number
+of calls.
+</p>
+</dd>
+<dt><code>-c</code></dt>
+<dt><code>--percentages</code></dt>
+<dd><p>Print percentages of total time for the command&rsquo;s user, system, and real
+time values.
+</p>
+</dd>
+<dt><code>-d</code></dt>
+<dt><code>--sort-avio</code></dt>
+<dd><p>Sort the output by the average number of disk I/O operations.
+</p>
+</dd>
+<dt><code>-D</code></dt>
+<dt><code>--sort-tio</code></dt>
+<dd><p>Print and sort the output by the total number of disk I/O operations.
+</p>
+</dd>
+<dt><code>-f</code></dt>
+<dt><code>--not-interactive</code></dt>
+<dd><p>When using the <code>--threshold</code> option, assume that all answers to
+interactive queries will be affirmative.
+</p>
+</dd>
+<dt><code>-i</code></dt>
+<dt><code>--dont-read-summary-file</code></dt>
+<dd><p>Don&rsquo;t read the information in <code>savacct</code>.
+</p>
+</dd>
+<dt><code>-j</code></dt>
+<dt><code>--print-seconds</code></dt>
+<dd><p>Instead of printing total minutes for each category, print seconds per
+call.
+</p>
+</dd>
+<dt><code>-k</code></dt>
+<dt><code>--sort-cpu-avmem</code></dt>
+<dd><p>Sort the output by cpu time average memory usage.
+</p>
+</dd>
+<dt><code>-K</code></dt>
+<dt><code>--sort-ksec</code></dt>
+<dd><p>Print and sort the output by the cpu-storage integral.
+</p>
+</dd>
+<dt><code>-l</code></dt>
+<dt><code>--separate-times</code></dt>
+<dd><p>Print separate columns for system and user time; usually the two are
+added together and listed as <code>cpu</code>.
+</p>
+</dd>
+<dt><code>-m</code></dt>
+<dt><code>--user-summary</code></dt>
+<dd><p>Print the number of processes and number of CPU minutes on a per-user
+basis.
+</p>
+</dd>
+<dt><code>-n</code></dt>
+<dt><code>--sort-num-calls</code></dt>
+<dd><p>Sort the output by the number of calls.  This is the default sorting
+method.
+</p>
+</dd>
+<dt><code>-p</code></dt>
+<dt><code>--show-paging</code></dt>
+<dd><p>Print the number of minor and major pagefaults and swaps.
+</p>
+</dd>
+<dt><code>-P</code></dt>
+<dt><code>--show-paging-avg</code></dt>
+<dd><p>Print the number of minor and major pagefaults and swaps divided by
+the number of calls.
+</p>
+</dd>
+<dt><code>-r</code></dt>
+<dt><code>--reverse-sort</code></dt>
+<dd><p>Sort output items in reverse order.
+</p>
+</dd>
+<dt><code>-s</code></dt>
+<dt><code>--merge</code></dt>
+<dd><p>Merge the summarized accounting data into the summary files
+<code>savacct</code> and <code>usracct</code>.
+</p>
+</dd>
+<dt><code>-t</code></dt>
+<dt><code>--print-ratio</code></dt>
+<dd><p>For each entry, print the ratio of real time to the sum of system and
+user times.  If the sum of system and user times is too small to
+report&mdash;the sum is zero&mdash;<code>*ignore*</code> will appear in this field.
+</p>
+</dd>
+<dt><code>-u</code></dt>
+<dt><code>--print-users</code></dt>
+<dd><p>For each command in the accounting file, print the userid and command
+name.  After printing all entries, quit.  <strong>Note</strong>: this flag
+supersedes all others.
+</p>
+</dd>
+<dt><code>-v <var>num</var></code></dt>
+<dt><code>--threshold <var>num</var></code></dt>
+<dd><p>Print commands which were executed <var>num</var> times or fewer and await a
+reply from the terminal.  If the response begins with <code>y</code>, add the
+command to the <code>**junk**</code> group.
+</p>
+</dd>
+<dt><code>--separate-forks</code></dt>
+<dd><p>It really doesn&rsquo;t make any sense to me that the stock version of
+<code>sa</code> separates statistics for a particular executable depending on
+whether or not that command forked.  Therefore, GNU <code>sa</code> lumps this
+information together unless this option is specified.
+</p>
+</dd>
+<dt><code>--sort-real-time</code></dt>
+<dd><p>Sort the output by the &ldquo;real time&rdquo; (elapsed time) for each command.
+</p>
+</dd>
+<dt><code>--ahz <var>hz</var></code></dt>
+<dd><p>Use this flag to tell the program what <code>AHZ</code> should be (in hertz).
+This option is useful if you are trying to view an <code>acct</code> file
+created on another machine which has the same byte order and file format
+as your current machine, but has a different value for <code>AHZ</code>.
+</p>
+</dd>
+<dt><code>--debug</code></dt>
+<dd><p>Print verbose internal information.
+</p>
+</dd>
+<dt><code>-V</code></dt>
+<dt><code>--version</code></dt>
+<dd><p>Print <code>sa</code>&rsquo;s version number.
+</p>
+</dd>
+<dt><code>-h</code></dt>
+<dt><code>--help</code></dt>
+<dd><p>Print <code>sa</code>&rsquo;s usage string and default locations of system files to
+standard output.
+</p></dd>
+</dl>
+
+<p><strong>Note</strong>: if more than one sorting option is specified, the list
+will be sorted by the one specified last on the command line.
+</p>
+<a name="Problems-1"></a>
+<h3 class="section">4.2 Problems</h3>
+
+<p>I haven&rsquo;t been able to test this on many different machines because the
+data files grow so big in a short time; our sysadmin would rather save
+the disk space.
+</p>
+<p>Most versions of <code>sa</code> that I&rsquo;ve tested don&rsquo;t pay attention to flags
+like <code>--print-seconds</code> and <code>--sort-num-calls</code> when printing
+out commands when combined with the <code>--user-summary</code> or
+<code>--print-users</code> flags.  GNU <code>sa</code> pays attention to these flags
+if they are applicable.
+</p>
+<a name="mips-sa"></a>
+<h4 class="subsection">4.2.1 mips sa</h4>
+
+<p>The average memory use is stored as a short rather than a double, so we
+suffer from round-off errors.  GNU <code>sa</code> uses double the whole way
+through.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="dump_002dacct.html#dump_002dacct" accesskey="n" rel="next">dump-acct</a>, Previous: <a href="lastcomm.html#lastcomm" accesskey="p" rel="prev">lastcomm</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="dump_002dacct.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

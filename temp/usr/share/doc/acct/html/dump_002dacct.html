@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.4.90, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>dump-acct (Accounting Utilities Manual)</title>
+
+<meta name="description" content="dump-acct (Accounting Utilities Manual)">
+<meta name="keywords" content="dump-acct (Accounting Utilities Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="sa.html#sa" rel="prev" title="sa">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="dump_002dacct"></a>
+<div class="header">
+<p>
+Previous: <a href="sa.html#sa" accesskey="p" rel="prev">sa</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="dump_002dacct-1"></a>
+<h2 class="chapter">5 <code>dump-acct</code></h2>
+
+<p><code>dump-acct</code> dumps some of the contents of one or more <code>acct</code>
+files in human readable form.  Usage:
+</p>
+<p><code>dump-acct [<var>opts</var>] <var>files</var></code>
+</p>
+<p>Unless called with the <code>--raw</code> option, it prints a table with the
+following fields, separated by vertical bars(<code>|</code>):
+</p>
+<dl compact="compact">
+<dt><code>ac_comm</code></dt>
+<dd><p>name of the executed program
+</p>
+</dd>
+<dt><code>ac_version</code></dt>
+<dd><p>version of the <code>acct</code> file format
+</p>
+</dd>
+<dt><code>ac_utime</code></dt>
+<dd><p>user time
+</p>
+</dd>
+<dt><code>ac_stime</code></dt>
+<dd><p>system time
+</p>
+</dd>
+<dt><code>ac_etime</code></dt>
+<dd><p>elapsed time
+</p>
+</dd>
+<dt><code>ac_uid</code></dt>
+<dd><p>user id
+</p>
+</dd>
+<dt><code>ac_gid</code></dt>
+<dd><p>group id
+</p>
+</dd>
+<dt><code>ac_mem</code></dt>
+<dd><p>(average) memory usage
+</p>
+</dd>
+<dt><code>ac_io</code></dt>
+<dd><p>number of characters transferred on input/output
+</p>
+</dd>
+<dt><code>ac_pid</code></dt>
+<dd><p>process id
+</p>
+</dd>
+<dt><code>ac_ppid</code></dt>
+<dd><p>parent&rsquo;s process id
+</p>
+</dd>
+</dl>
+
+<p>All times will be given in platform dependent units (&ldquo;<code>AHZ</code>&rdquo;).
+Not all of the above columns will actually appear, depending on what
+information your operating system provides in it&rsquo;s <code>struct acct</code>.
+</p>
+<a name="Flags-4"></a>
+<h3 class="section">5.1 Flags</h3>
+
+<dl compact="compact">
+<dt><code>--ahz <var>hz</var></code></dt>
+<dd><p>Use this flag to tell the program what <code>AHZ</code> should be (in Hertz).
+This option is useful if you are trying to view an <code>acct</code> file
+created on another machine which has a different value for <code>AHZ</code>.
+</p>
+</dd>
+<dt><code>--byteswap</code></dt>
+<dd><p>Swap the bytes (relative to your system&rsquo;s native byte order) in
+<code>--raw</code> output.
+</p>
+</dd>
+<dt><code>--format</code></dt>
+<dd><p>Set output format with <code>--raw</code> option.
+</p>
+</dd>
+<dt><code>-n <var>num</var></code></dt>
+<dt><code>--num <var>num</var></code></dt>
+<dd><p>Limit the number of lines (or records with <code>--raw</code>) to print.
+</p>
+</dd>
+<dt><code>-r</code></dt>
+<dt><code>--reverse</code></dt>
+<dd><p>Read the accounting file backwards (print latest record first).
+</p>
+</dd>
+<dt><code>-R</code></dt>
+<dt><code>--raw</code></dt>
+<dd><p>Don&rsquo;t print human readable output, dump the raw record instead.
+Useful to convert between different Linux file formats (see below).
+</p>
+</dd>
+<dt><code>-h</code></dt>
+<dt><code>--help</code></dt>
+<dd><p>Print <code>dump-acct</code>&rsquo;s usage string and default location of
+the accouning file to standard output.
+</p>
+</dd>
+</dl>
+
+<p><code>--byteswap</code> and <code>--format</code> options are only available with
+Linux multiformat support. They only affect <em>output</em> with
+the <code>--raw</code> option, format and byte order of the input are
+automatically detected.
+Thus they are useful to convert between different file formats.
+</p>
+<p>The <code>--ahz</code> option affects input and output (except for v3 file
+format, which by definition is fixed to <code>AHZ=100</code>).
+If you ever need to convert between different <code>AHZ</code> values,
+use a two-step process:
+First convert to v3 format with the <em>old</em> <code>AHZ</code> value, then
+convert to the desired output format with the <em>new</em> <code>AHZ</code>
+setting.
+</p>
+
+
+<a name="SEC_Contents"></a>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+<ul class="no-bullet">
+<li><a name="toc-Preface-1" href="Preface.html#Preface">Preface</a>
+<ul class="no-bullet">
+  <li><a name="toc-A-Note-on-File-Names-and-Locations" href="Preface.html#A-Note-on-File-Names-and-Locations">A Note on File Names and Locations</a></li>
+  <li><a name="toc-Support-for-Multiple-Accounting-File-Formats-under-Linux" href="Preface.html#Support-for-Multiple-Accounting-File-Formats-under-Linux">Support for Multiple Accounting File Formats under Linux</a></li>
+  <li><a name="toc-History-of-the-Accounting-Utilities" href="Preface.html#History-of-the-Accounting-Utilities">History of the Accounting Utilities</a></li>
+</ul></li>
+<li><a name="toc-ac-1" href="ac.html#ac">1 <code>ac</code></a>
+<ul class="no-bullet">
+  <li><a name="toc-Flags" href="ac.html#Flags">1.1 Flags</a></li>
+  <li><a name="toc-Problems" href="ac.html#Problems">1.2 Problems</a>
+  <ul class="no-bullet">
+    <li><a name="toc-The-FTP-Problem" href="ac.html#The-FTP-Problem">The FTP Problem</a>
+    <ul class="no-bullet">
+      <li><a name="toc-The-Shutdown_002fReboot-Problem" href="ac.html#The-Shutdown_002fReboot-Problem">The Shutdown/Reboot Problem</a></li>
+      <li><a name="toc-Stupid-System-V-Machines" href="ac.html#Stupid-System-V-Machines">Stupid System V Machines</a></li>
+    </ul></li>
+  </ul></li>
+</ul></li>
+<li><a name="toc-accton-1" href="accton.html#accton">2 <code>accton</code></a>
+<ul class="no-bullet">
+  <li><a name="toc-Flags-1" href="accton.html#Flags-1">2.1 Flags</a></li>
+</ul></li>
+<li><a name="toc-lastcomm-1" href="lastcomm.html#lastcomm">3 <code>lastcomm</code></a>
+<ul class="no-bullet">
+  <li><a name="toc-Flags-2" href="lastcomm.html#Flags-2">3.1 Flags</a></li>
+</ul></li>
+<li><a name="toc-sa-1" href="sa.html#sa">4 <code>sa</code></a>
+<ul class="no-bullet">
+  <li><a name="toc-Flags-3" href="sa.html#Flags-3">4.1 Flags</a></li>
+  <li><a name="toc-Problems-1" href="sa.html#Problems-1">4.2 Problems</a>
+  <ul class="no-bullet">
+    <li><a name="toc-mips-sa" href="sa.html#mips-sa">4.2.1 mips sa</a></li>
+  </ul></li>
+</ul></li>
+<li><a name="toc-dump_002dacct-1" href="#dump_002dacct">5 <code>dump-acct</code></a>
+<ul class="no-bullet">
+  <li><a name="toc-Flags-4" href="#Flags-4">5.1 Flags</a></li>
+</ul></li>
+
+</ul>
+</div>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="sa.html#sa" accesskey="p" rel="prev">sa</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
